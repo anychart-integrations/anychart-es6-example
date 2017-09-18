@@ -45,9 +45,7 @@
         firstColumn.title('Server')
                 .width(140)
                 .cellTextSettingsOverrider(labelTextSettingsOverrider)
-                .format(function (item) {
-                    return item.get('name');
-                });
+                .format(item => item.get('name'));
     
         // set first column settings
         var secondColumn = dataGrid.column(2);
@@ -55,9 +53,7 @@
         secondColumn.title('Online')
                 .width(60)
                 .cellTextSettingsOverrider(labelTextSettingsOverrider)
-                .format(function (item) {
-                    return item.get('online') || '';
-                });
+                .format(item => item.get('online') || '');
     
         // set first column settings
         var thirdColumn = dataGrid.column(3);
@@ -65,9 +61,7 @@
         thirdColumn.title('Maintenance')
                 .width(60)
                 .cellTextSettingsOverrider(labelTextSettingsOverrider)
-                .format(function (item) {
-                    return item.get('maintenance') || '';
-                });
+                .format(item => item.get('maintenance') || '');
     
         // set first column settings
         var fourthColumn = dataGrid.column(4);
@@ -75,9 +69,7 @@
         fourthColumn.title('Offline')
                 .width(60)
                 .cellTextSettingsOverrider(labelTextSettingsOverrider)
-                .format(function (item) {
-                    return item.get('offline') || '';
-                });
+                .format(item => item.get('offline') || '');
     
         // set container id for the chart
         chart.container('container');
