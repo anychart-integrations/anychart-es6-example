@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <!-- html5 set charset -->
+    <meta charset="utf-8"/>
+    <style>
+        #container {
+            width: 1200px;
+            height: 600px;
+        }
+    </style>
+    <script src="https://cdn.anychart.com/samples-data/gantt-charts/server-status-list/data.js"></script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script type="module">
+    import './anychart-bundle.min.js'
+    let chart;
+    anychart.onDocumentReady(() => {
+        // The data used in this sample can be obtained from the CDN
+        // https://cdn.anychart.com/samples-data/gantt-charts/server-status-list/data.js
+        var newData = getData();
+    
+        // create data tree on our data
+        var treeData = anychart.data.tree(newData, 'asTable');
+    
+        // create project gantt chart
+        chart = anychart.ganttResource();
+    
+        // set data for the chart
+        chart.data(treeData);
+    
+        // set start splitter position settings
+        chart.splitterPosition(320);
+    
+        // get chart data grid link to set column settings
+        var dataGrid = chart.dataGrid();
+    
+        dataGrid.column(0).enabled(false);
+    
+        // set first column settings
+        var firstColumn = dataGrid.column(1);
+        firstColumn.cellTextSettings().hAlign('left');
+        firstColumn.title('Server')
+                .width(140)
+                .cellTextSettingsOverrider(labelTextSettingsOverrider)
+                .format(function (item) {
+                    return item.get('name');
+                });
+    
+        // set first column settings
+        var secondColumn = dataGrid.column(2);
+        secondColumn.cellTextSettings().hAlign('right');
+        secondColumn.title('Online')
+                .width(60)
+                .cellTextSettingsOverrider(labelTextSettingsOverrider)
+                .format(function (item) {
+                    return item.get('online') || '';
+                });
+    
+        // set first column settings
+        var thirdColumn = dataGrid.column(3);
+        thirdColumn.cellTextSettings().hAlign('right');
+        thirdColumn.title('Maintenance')
+                .width(60)
+                .cellTextSettingsOverrider(labelTextSettingsOverrider)
+                .format(function (item) {
+                    return item.get('maintenance') || '';
+                });
+    
+        // set first column settings
+        var fourthColumn = dataGrid.column(4);
+        fourthColumn.cellTextSettings().hAlign('right');
+        fourthColumn.title('Offline')
+                .width(60)
+                .cellTextSettingsOverrider(labelTextSettingsOverrider)
+                .format(function (item) {
+                    return item.get('offline') || '';
+                });
+    
+        // set container id for the chart
+        chart.container('container');
+    
+        chart.draw();
+    
+        chart.zoomTo(Date.UTC(2008, 0, 31, 1, 36), Date.UTC(2008, 1, 15, 10, 3));
+    
+    });
+    
+    let labelTextSettingsOverrider = (label, item) => {
+        switch (item.get('type')) {
+            case 'online':
+                label.fontColor('green').fontWeight('bold');
+                break;
+            case 'offline':
+                label.fontColor('red').fontWeight('bold');
+                break;
+            case 'maintenance':
+                label.fontColor('orange').fontWeight('bold');
+                break;
+        }
+    }
+    
+        
+</script>
+</html>
