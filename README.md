@@ -55,5 +55,5 @@ AnyChart ES6 integration sample includes two parts:
 - code of the integration sample that allows to use Javascript library (in this case, AnyChart) with ECMAScript6. You can use, edit, modify it, use it with other Javascript libraries without any restrictions. It is released under [Apache 2.0 License](https://github.com/anychart-integrations/anychart-es6-example/blob/master/LICENSE).
 - AnyChart JavaScript library. It is released under Commercial license. You can test this plugin with the trial version of AnyChart. Our trial version is not limited by time and doesn't contain any feature limitations. Check details [here](https://www.anychart.com/buy/) 
 
-If you have any questions regarding licensing - please contact us. <sales@anychart.com>(https://github.com/anychart-integrations/nodejs-export-server-application/blob/master/LICENSE).
+If you have any questions regarding licensing - please contact us. <sales@anychart.com>
 [![Analytics](https://ga-beacon.appspot.com/UA-228820-4/Integrations/anychart-es6-example?pixel&useReferer)](https://github.com/igrigorik/ga-beacon)
